@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/']">My Photo Application</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" *ngIf="userService.user | async">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['albums/recent']">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['profile/me']">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['albums/me']">Albums</a>
+        </li>
+      </ul> 
+    </div>
+
+    <div class="float-right" style="padding-right: 0px; padding-top: 20px;">
+
+      <button [routerLink]="['login']" *ngIf="!(userService.user | async)" class="btn btn-outline-primary">Login</button>
+  
+  </div><br>
+
+    <div class="float-right" style="padding-right: 30px; padding-top: 20px;">
+
+      <button (click)="logout()" *ngIf="userService.user | async" class="btn btn-outline-danger">Logout</button>
+  
+  </div><br>
+    
+  </nav>
+
+<router-outlet></router-outlet>

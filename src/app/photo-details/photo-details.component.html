@@ -1,0 +1,28 @@
+
+<div class="float-right" style="padding-right: 30px; padding-top: 20px;">
+
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-outline-success" [routerLink]="['/album', albumId]">Go back to Album</button>
+      
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Make this
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" (click)="makeProfilePhoto()">Profile Photo</a>
+            <a class="dropdown-item" (click)="makeAlbumCoverPhoto()">Album Cover</a>
+          </div>
+        </div>
+      </div>
+</div><br>
+
+<div *ngIf = "photo" style="margin: auto; width: 450px;">
+<img [src] ="photo.photoUrl" class="rounded" width="450px"/>
+</div>
+<br>
+<div *ngIf="allComments">
+    <div class="alert alert-primary" role="alert" *ngFor="let comment of allComments" style="text-align: right;">
+        {{comment.comment}} -- Created by: {{comment.createdby}} on {{comment.dateCreated}}
+    </div>
+
+</div>
